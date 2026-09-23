@@ -2,98 +2,331 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111827">
 <title>یار هوشمند</title>
+
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1020;color:#fff;overflow:hidden}
-body{display:flex;justify-content:center}
-.app{width:100%;max-width:700px;height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,#111827 0%,#0b1020 100%)}
-header{padding:calc(14px + env(safe-area-inset-top)) 18px 14px;border-bottom:1px solid #263149;display:flex;align-items:center;gap:12px}
-.avatar{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#6366f1,#22c55e);display:grid;place-items:center;font-size:22px;box-shadow:0 8px 25px #0005}
-.title{font-size:19px;font-weight:800}.sub{font-size:12px;color:#9ca3af;margin-top:3px}
-.status{margin-right:auto;display:flex;align-items:center;gap:6px;color:#86efac;font-size:11px}.dot{width:7px;height:7px;border-radius:50%;background:#22c55e}
-.chat{flex:1;overflow-y:auto;padding:20px 15px 14px;scroll-behavior:smooth}
-.welcome{text-align:center;margin:12vh auto 30px;max-width:340px}
-.big{font-size:52px;margin-bottom:12px}.welcome h1{margin:0 0 8px;font-size:26px}.welcome p{color:#aab3c5;line-height:1.8;margin:0}
-.quick{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}
-.quick button{border:1px solid #303b55;background:#151e31;color:#dbe4f5;border-radius:16px;padding:10px 13px;font-size:13px}
-.msg{display:flex;margin:12px 0}.msg.user{justify-content:flex-start}.msg.ai{justify-content:flex-end}
-.bubble{max-width:82%;padding:12px 15px;border-radius:18px;line-height:1.8;font-size:15px;white-space:pre-wrap}
-.user .bubble{background:#4f46e5;border-bottom-right-radius:5px}.ai .bubble{background:#182235;border:1px solid #293650;border-bottom-left-radius:5px}
-.composer{padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #263149;background:#0e1525;display:flex;gap:8px;align-items:flex-end}
-.input{flex:1;min-height:48px;max-height:120px;border:1px solid #33405b;background:#151e31;color:#fff;border-radius:18px;padding:13px 15px;outline:none;font-size:16px;resize:none;direction:rtl}
-.input:focus{border-color:#6366f1}.btn{width:48px;height:48px;border:0;border-radius:16px;color:#fff;font-size:20px;display:grid;place-items:center}.mic{background:#25304a}.send{background:#4f46e5}.btn:active{transform:scale(.95)}
-.typing{color:#9ca3af;font-size:13px;padding:5px 8px}.hidden{display:none}
+*{
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent
+}
+
+html,body{
+margin:0;
+width:100%;
+height:100%;
+background:#0b1020;
+color:#fff;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif
+}
+
+body{
+display:flex;
+justify-content:center
+}
+
+.app{
+width:100%;
+max-width:700px;
+height:100%;
+display:flex;
+flex-direction:column;
+background:#111827
+}
+
+header{
+padding:calc(12px + env(safe-area-inset-top)) 14px 12px;
+display:flex;
+align-items:center;
+gap:10px;
+border-bottom:1px solid #263044;
+background:#151c2d
+}
+
+.avatar{
+width:44px;
+height:44px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:#6d5dfc;
+font-size:22px
+}
+
+.title{
+font-size:19px;
+font-weight:800
+}
+
+.sub{
+font-size:12px;
+color:#9ca3af;
+margin-top:3px
+}
+
+.status{
+margin-right:auto;
+display:flex;
+align-items:center;
+gap:6px;
+color:#86efac;
+font-size:12px
+}
+
+.dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#22c55e
+}
+
+.chat{
+flex:1;
+overflow-y:auto;
+padding:18px 14px 12px
+}
+
+.welcome{
+text-align:center;
+color:#9ca3af;
+margin:14px 0 18px
+}
+
+.big{
+font-size:42px;
+margin-bottom:8px
+}
+
+.quick{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:16px
+}
+
+.quick button{
+border:1px solid #303b55;
+background:#182238;
+color:#dbeafe;
+border-radius:18px;
+padding:8px 12px;
+font-size:13px
+}
+
+.msg{
+display:flex;
+margin:11px 0
+}
+
+.msg.user{
+justify-content:flex-start
+}
+
+.msg.ai{
+justify-content:flex-end
+}
+
+.bubble{
+max-width:84%;
+padding:11px 14px;
+border-radius:18px;
+line-height:1.8;
+font-size:15px;
+white-space:pre-wrap;
+word-break:break-word
+}
+
+.user .bubble{
+background:#334155;
+border-bottom-right-radius:5px
+}
+
+.ai .bubble{
+background:#4f46e5;
+border-bottom-left-radius:5px
+}
+
+.typing{
+opacity:.75
+}
 </style>
 </head>
 <body>
+
 <div class="app">
+
 <header>
-  <div class="avatar">🤖</div>
-  <div><div class="title">یار هوشمند</div><div class="sub">دستیار شخصی فارسی</div></div>
-  <div class="status"><span class="dot"></span> آماده</div>
+<div class="avatar">✦</div>
+
+<div>
+<div class="title">یار هوشمند</div>
+<div class="sub">دستیار شخصی شما</div>
+</div>
+
+<div class="status">
+<span class="dot"></span>
+آنلاین
+</div>
 </header>
 
 <main class="chat" id="chat">
-  <section class="welcome" id="welcome">
-    <div class="big">🤖</div>
-    <h1>سلام! من یار هوشمندم</h1>
-    <p>پیامت رو بنویس یا با میکروفون صحبت کن. این نسخه رابط کاربری آماده است و در مرحله بعد به هوش مصنوعی واقعی وصل می‌شود.</p>
-    <div class="quick">
-      <button onclick="quickSend('سلام، خودت رو معرفی کن')">معرفی خودت</button>
-      <button onclick="quickSend('چه کارهایی می‌تونی انجام بدی؟')">چه کارهایی بلدی؟</button>
-      <button onclick="quickSend('یک جمله انگیزشی بگو')">جمله انگیزشی</button>
-    </div>
-  </section>
-  <div id="typing" class="typing hidden">یار هوشمند در حال پاسخ است…</div>
-</main>
 
-<div class="composer">
-  <button class="btn mic" id="mic" title="صحبت">🎙️</button>
-  <textarea id="input" class="input" rows="1" placeholder="پیامت را بنویس..."></textarea>
-  <button class="btn send" id="send" title="ارسال">➤</button>
+<div class="welcome">
+<div class="big">🤖</div>
+<div>سلام! من یار هوشمندم. هر چیزی می‌خوای بپرس.</div>
 </div>
+
+<div class="quick">
+
+<button onclick="quickAsk('سلام! خودت را معرفی کن')">
+معرفی خودت
+</button>
+
+<button onclick="quickAsk('یک ایده خوب برای امروز بده')">
+ایده بده
+</button>
+
+<button onclick="quickAsk('به من در برنامه‌ریزی کمک کن')">
+برنامه‌ریزی
+</button>
+
+</div>
+
+</main>
+<div class="composer">
+
+<button class="btn mic" id="mic">🎙️</button>
+
+<textarea class="input" id="input" rows="1" placeholder="پیامت را بنویس..."></textarea>
+
+<button class="btn send" id="send">➤</button>
+
+</div>
+
+<div class="small">
+پیام‌ها برای پاسخ‌گویی به هوش مصنوعی ارسال می‌شوند.
+</div>
+
 </div>
 
 <script>
-const chat=document.getElementById('chat'), input=document.getElementById('input'), send=document.getElementById('send');
-const welcome=document.getElementById('welcome'), typing=document.getElementById('typing');
+const API_URL="https://yar-hoshmand.xagxorian.workers.dev/chat";
 
-function addMsg(text,who){
-  const row=document.createElement('div'); row.className='msg '+who;
-  const b=document.createElement('div'); b.className='bubble'; b.textContent=text;
-  row.appendChild(b); chat.insertBefore(row,typing); chat.scrollTop=chat.scrollHeight;
-}
-function demoReply(t){
-  const s=t.toLowerCase();
-  if(s.includes('سلام')) return 'سلام 👋\nخوش اومدی! من یار هوشمند هستم.';
-  if(s.includes('چه کار')||s.includes('چی کار')) return 'در نسخه کامل می‌تونم به سؤال‌ها جواب بدم، متن بنویسم، ایده بدم، ترجمه کنم و با صدای تو کار کنم.';
-  if(s.includes('انگیز')) return 'هر قدم کوچیک، تو رو به چیزی که می‌خوای نزدیک‌تر می‌کنه 💪';
-  return 'پیامت رو دریافت کردم ✅\nاین نسخه فعلاً برای تست رابط کاربریه. قدم بعدی اتصال امن به هوش مصنوعی واقعی است.';
-}
-function quickSend(t){input.value=t; sendMsg()}
-function sendMsg(){
-  const t=input.value.trim(); if(!t)return;
-  welcome.style.display='none'; addMsg(t,'user'); input.value=''; input.style.height='48px';
-  typing.classList.remove('hidden');
-  setTimeout(()=>{typing.classList.add('hidden'); addMsg(demoReply(t),'ai')},500);
-}
-send.onclick=sendMsg;
-input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg()}});
-input.addEventListener('input',()=>{input.style.height='48px';input.style.height=Math.min(input.scrollHeight,120)+'px'});
+const chat=document.getElementById("chat");
+const input=document.getElementById("input");
+const send=document.getElementById("send");
+const mic=document.getElementById("mic");
 
-const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-let rec;
+function addMessage(text,type){
+const row=document.createElement("div");
+row.className="msg "+type;
+
+const bubble=document.createElement("div");
+bubble.className="bubble";
+bubble.textContent=text;
+
+row.appendChild(bubble);
+chat.appendChild(row);
+chat.scrollTop=chat.scrollHeight;
+
+return bubble;
+}
+
+async function sendMessage(){
+
+const message=input.value.trim();
+if(!message)return;
+
+input.value="";
+input.style.height="48px";
+
+addMessage(message,"user");
+
+send.disabled=true;
+
+const bubble=addMessage("در حال فکر کردن...","ai typing");
+
+try{
+
+const res=await fetch(API_URL,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({message})
+});
+
+const data=await res.json().catch(()=>({}));
+
+if(!res.ok){
+throw new Error(data.error||"خطا در ارتباط با سرور");
+}
+
+bubble.classList.remove("typing");
+bubble.textContent=data.reply||"پاسخی دریافت نشد.";
+
+}catch(e){
+
+bubble.classList.remove("typing");
+bubble.textContent="❌ "+(e.message||"ارتباط برقرار نشد.");
+
+}finally{
+
+send.disabled=false;
+input.focus();
+
+}
+}
+
+function quickAsk(text){
+input.value=text;
+sendMessage();
+}
+
+send.addEventListener("click",sendMessage);
+
+input.addEventListener("keydown",e=>{
+if(e.key==="Enter"&&!e.shiftKey){
+e.preventDefault();
+sendMessage();
+}
+});
+
+input.addEventListener("input",()=>{
+input.style.height="48px";
+input.style.height=Math.min(input.scrollHeight,140)+"px";
+});
+
+const SpeechRecognition=
+window.SpeechRecognition||window.webkitSpeechRecognition;
+
 if(SpeechRecognition){
-  rec=new SpeechRecognition(); rec.lang='fa-IR'; rec.continuous=false; rec.interimResults=false;
-  rec.onresult=e=>{input.value=e.results[0][0].transcript; input.dispatchEvent(new Event('input'));};
-  rec.onend=()=>document.getElementById('mic').textContent='🎙️';
-  document.getElementById('mic').onclick=()=>{try{rec.start();document.getElementById('mic').textContent='🔴'}catch(e){}};
+
+const rec=new SpeechRecognition();
+
+rec.lang="fa-IR";
+rec.interimResults=false;
+rec.continuous=false;
+
+mic.addEventListener("click",()=>{
+try{
+rec.start();
+mic.textContent="🔴";
+}catch{}
+});
+
+rec.onresult=e=>{
+input.value=e.results[0][0].transcript;
+input.dispatchEvent(new Event("input"));
+};
+
+rec.onend=()=>mic.textContent="🎙️";
+rec.onerror=()=>mic.textContent="🎙️";
+
 }else{
-  document.getElementById('mic').onclick=()=>alert('تشخیص صدای مرورگر در این دستگاه/مرورگر فعال نیست.');
+mic.style.opacity=".45";
 }
 </script>
+
 </body>
 </html>
